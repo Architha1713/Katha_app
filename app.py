@@ -1,126 +1,126 @@
 import streamlit as st
 
-# Page Configuration
 st.set_page_config(
     page_title="Katha",
-    page_icon="icon.png",  # Keep icon.png in same folder (or change to 🌸 if no image yet)
+    page_icon="icon.png",  # change to icon.png later if needed
     layout="wide"
 )
 
-# 🌿 PREMIUM ANIMATED UI CSS
+# 🎨 CUSTOM FONTS + PREMIUM UI CSS
 st.markdown("""
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+
 <style>
 
-/* Animated Gradient Background */
+/* 🌿 Soft Animated Gradient Background */
 .stApp {
-    background: linear-gradient(-45deg, #F6FFF4, #E8FAD9, #D4F4B2, #B7E892);
+    background: linear-gradient(-45deg, #F7FFF2, #EAFAD7, #DFF3C3, #B7E892);
     background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
+    animation: gradientBG 18s ease infinite;
 }
 
-/* Gradient Animation */
+/* Smooth Gradient Motion */
 @keyframes gradientBG {
     0% {background-position: 0% 50%;}
     50% {background-position: 100% 50%;}
     100% {background-position: 0% 50%;}
 }
 
-/* Floating Glow Particles */
+/* ✨ VERY SUBTLE FLOATING GLOW (barely visible premium effect) */
 .glow {
     position: fixed;
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(circle, rgba(183,232,146,0.4) 0%, rgba(183,232,146,0) 70%);
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(183,232,146,0.18) 0%, rgba(183,232,146,0) 70%);
     border-radius: 50%;
-    animation: float 12s infinite ease-in-out;
-    z-index: 0;
+    filter: blur(60px);
+    animation: float 25s infinite ease-in-out;
+    z-index: -1;
+    opacity: 0.6;
 }
 
-.glow:nth-child(1) {
-    top: 10%;
-    left: 5%;
-}
+.glow1 { top: 10%; left: 5%; }
+.glow2 { top: 60%; left: 75%; animation-delay: 8s; }
+.glow3 { top: 80%; left: 25%; animation-delay: 16s; }
 
-.glow:nth-child(2) {
-    top: 60%;
-    left: 80%;
-    animation-delay: 4s;
-}
-
-.glow:nth-child(3) {
-    top: 80%;
-    left: 20%;
-    animation-delay: 8s;
-}
-
-/* Floating Animation */
 @keyframes float {
     0% {transform: translateY(0px);}
-    50% {transform: translateY(-30px);}
+    50% {transform: translateY(-40px);}
     100% {transform: translateY(0px);}
 }
 
-/* Main Title Styling */
+/* 🌸 MAIN TITLE (Tradition-style elegant serif) */
 .main-title {
-    font-size: 78px;
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
     font-weight: 900;
     text-align: center;
-    color: #1B5E20;
-    letter-spacing: 3px;
-    font-family: 'Segoe UI', sans-serif;
-    animation: fadeIn 2s ease-in-out;
+    color: #2F4F2F;
+    letter-spacing: 2px;
+    margin-bottom: 0px;
 }
 
-/* Subtitle */
+/* ✨ SUBTITLE (Script-style elegant font) */
 .subtitle {
-    font-size: 26px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 32px;
     text-align: center;
-    color: #2E7D32;
+    color: #1B5E20;
     margin-top: -10px;
-    animation: fadeIn 3s ease-in-out;
 }
 
-/* Feature Card */
+/* 📦 CUSTOM INFO BOX (Beige #C2B280 + Green Text) */
+.custom-info {
+    background-color: #C2B280;
+    color: #1B5E20;
+    padding: 18px;
+    border-radius: 14px;
+    font-size: 18px;
+    text-align: center;
+    font-weight: 500;
+    box-shadow: 0px 6px 18px rgba(0,0,0,0.08);
+}
+
+/* 💎 Glass Feature Cards */
 .feature-card {
-    background-color: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.65);
     padding: 25px;
     border-radius: 20px;
-    box-shadow: 0px 8px 25px rgba(0,0,0,0.08);
     backdrop-filter: blur(10px);
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.08);
     transition: transform 0.3s ease;
 }
 
 .feature-card:hover {
-    transform: translateY(-5px);
-}
-
-/* Fade Animation */
-@keyframes fadeIn {
-    0% {opacity: 0; transform: translateY(30px);}
-    100% {opacity: 1; transform: translateY(0);}
+    transform: translateY(-6px);
 }
 
 </style>
 
-<!-- Floating Glow Elements -->
-<div class="glow"></div>
-<div class="glow"></div>
-<div class="glow"></div>
+<!-- Subtle Floating Glow Elements -->
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
+<div class="glow glow3"></div>
 
 """, unsafe_allow_html=True)
 
 # 🌸 HERO SECTION
 st.markdown('<div class="main-title">Katha</div>', unsafe_allow_html=True)
+
 st.markdown(
-    '<div class="subtitle">A Multilingual AI Companionship & Life Stories Platform for Seniors </div>',
+    '<div class="subtitle">A Multilingual AI Companionship & Life Stories Platform for Seniors</div>',
     unsafe_allow_html=True
 )
 
 st.write("")
 
-# Emotional Intro
-st.info("Every senior has a story. Katha is a safe, warm space to connect, share memories, and build meaningful friendships.")
+# 📦 CUSTOM INFO BOX (Your requested color change)
+st.markdown(
+    '<div class="custom-info">Every senior has a story. Katha is a safe, warm space to connect, share memories, and build meaningful friendships.</div>',
+    unsafe_allow_html=True
+)
 
+st.write("")
 st.write("---")
 
 # 💎 PREMIUM FEATURE CARDS
@@ -130,7 +130,7 @@ with col1:
     st.markdown("""
     <div class="feature-card">
     <h3>👵 Companionship</h3>
-    <p>Connect seniors with trusted friends, volunteers, and social circles in a safe environment.</p>
+    <p>Connect seniors with trusted friends and companions in a safe emotional environment.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -138,7 +138,7 @@ with col2:
     st.markdown("""
     <div class="feature-card">
     <h3>📖 Life Stories Vault</h3>
-    <p>Preserve precious memories and life journeys digitally with dignity and emotional value.</p>
+    <p>Preserve life journeys, memories, and personal stories digitally with dignity.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -146,17 +146,16 @@ with col3:
     st.markdown("""
     <div class="feature-card">
     <h3>🌐 Multilingual Support</h3>
-    <p>Supports Kannada, Telugu, Tamil, Malayalam, Hindi, and English for inclusive communication.</p>
+    <p>Supports Kannada, Telugu, Tamil, Malayalam, Hindi, and English for inclusive access.</p>
     </div>
     """, unsafe_allow_html=True)
 
 st.write("---")
 
-# Mission Section
-st.header(" Our Mission")
+st.header("Our Mission")
 st.write("""
-Katha is designed to reduce loneliness among seniors by creating a multilingual, AI-assisted, and emotionally intelligent platform 
-where stories are heard, friendships are formed, and memories are preserved with dignity.
+Katha is designed to reduce loneliness among seniors by creating a multilingual, emotionally intelligent,
+and safe companionship platform where stories are heard, friendships are formed, and memories are preserved with dignity.
 """)
 
 st.caption("🌸 Katha | Connecting Hearts Through Stories")
