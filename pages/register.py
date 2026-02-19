@@ -57,11 +57,13 @@ st.markdown("""
 }
 
 .form-card {
-    background: rgba(255,255,255,0.75);
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0px 8px 25px rgba(0,0,0,0.08);
-    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.82);
+    padding: 35px;
+    border-radius: 22px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.07);
+    backdrop-filter: blur(12px);
+    max-width: 650px;
+    margin: auto;
 }
 </style>
 
@@ -71,7 +73,7 @@ st.markdown("""
 
 # 🌸 Titles
 st.markdown('<div class="page-title">Join Katha</div>', unsafe_allow_html=True)
-st.markdown('<div class="subtitle">Create your profile to begin meaningful connections 💖</div>', unsafe_allow_html=True)
+st.markdown('<div class="subtitle">Create your profile to begin meaningful connections </div>', unsafe_allow_html=True)
 
 st.write("")
 
