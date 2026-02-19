@@ -1,88 +1,78 @@
 import streamlit as st
 
-# Page Config
+# Page Config (You can change icon image later)
 st.set_page_config(
-    page_title="Katha 🌸",
-    page_icon="🌸",
+    page_title="Katha",
+    page_icon="🌸",  # we will replace with image next
     layout="wide"
 )
 
-# Custom CSS for Beautiful UI
+# 🌿 Custom CSS for Premium UI + Gradient + Animation
 st.markdown("""
-    <style>
-    .main {
-        background-color: #FFF7F5;
-    }
-    .title {
-        font-size: 50px;
-        font-weight: bold;
-        color: #C2185B;
-        text-align: center;
-    }
-    .subtitle {
-        font-size: 22px;
-        text-align: center;
-        color: #6A1B9A;
-    }
-    .feature-box {
-        background-color: #FFFFFF;
-        padding: 20px;
-        border-radius: 15px;
-        box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-        margin: 10px;
-    }
-    </style>
+<style>
+/* Background Gradient */
+.stApp {
+    background: linear-gradient(135deg, #F4FFF2, #B7E892);
+}
+
+/* Main Title Styling */
+.main-title {
+    font-size: 70px;
+    font-weight: 800;
+    text-align: center;
+    color: #2E7D32;
+    font-family: 'Segoe UI', sans-serif;
+    letter-spacing: 2px;
+    animation: fadeIn 2s ease-in;
+}
+
+/* Subtitle Styling */
+.subtitle {
+    font-size: 26px;
+    text-align: center;
+    color: #1B5E20;
+    margin-top: -10px;
+    animation: fadeIn 3s ease-in;
+}
+
+/* Info Box Styling */
+.stInfo {
+    border-radius: 15px;
+    font-size: 18px;
+}
+
+/* Smooth Fade Animation */
+@keyframes fadeIn {
+    0% {opacity: 0; transform: translateY(20px);}
+    100% {opacity: 1; transform: translateY(0);}
+}
+</style>
 """, unsafe_allow_html=True)
 
-# Hero Section
-st.markdown('<p class="title">🌸 Katha</p>', unsafe_allow_html=True)
+# 🌸 HERO SECTION (BIG TITLE)
+st.markdown('<div class="main-title">Katha</div>', unsafe_allow_html=True)
 st.markdown(
-    '<p class="subtitle">A Multilingual AI Companionship & Life Stories Platform for Seniors 💖</p>',
+    '<div class="subtitle">A Multilingual AI Companionship & Life Stories Platform for Seniors </div>',
     unsafe_allow_html=True
 )
 
 st.write("")
 
-# Emotional Intro
 st.info("Every senior has a story. Katha is a safe space to connect, share memories, and build meaningful friendships.")
 
 st.write("---")
 
-# Feature Section (Beautiful Columns)
+# Feature Section
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.markdown("""
-    <div class="feature-box">
-    <h3>👵👴 Companionship</h3>
-    <p>Connect seniors with friends, volunteers, and community circles.</p>
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown("### 👵 Companionship")
+    st.write("Connect seniors with friends and volunteers in a safe environment.")
 
 with col2:
-    st.markdown("""
-    <div class="feature-box">
-    <h3>📖 Life Stories Vault</h3>
-    <p>Preserve memories, experiences, and life journeys digitally.</p>
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown("### 📖 Life Stories Vault")
+    st.write("Preserve memories and life journeys digitally with dignity.")
 
 with col3:
-    st.markdown("""
-    <div class="feature-box">
-    <h3>🌐 Multilingual Support</h3>
-    <p>Supports Kannada, Telugu, Tamil, Malayalam, Hindi, and English.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-st.write("---")
-
-# Mission Section
-st.header("💝 Our Mission")
-st.write("""
-Katha is designed to reduce loneliness among seniors by creating a safe, multilingual, and emotionally intelligent platform where stories are heard, friendships are formed, and memories are preserved with dignity.
-""")
-
-# Footer
-st.write("---")
-st.caption("🌸 Katha | Connecting Hearts Through Stories")
+    st.markdown("### 🌐 Multilingual Support")
+    st.write("Supports Kannada, Telugu, Tamil, Malayalam, Hindi, and English.")
