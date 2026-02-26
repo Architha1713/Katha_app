@@ -99,3 +99,36 @@ st.write("""
 Katha is designed to reduce loneliness among seniors by creating a simple, multilingual and emotionally safe companionship platform.
 We focus on accessibility, dignity, and meaningful human connection rather than complex technology.
 """)
+
+st.write("---")
+
+# 🛡️ SAFETY & TRUST SECTION
+st.markdown("## 🛡️ Safety & Trust First Design")
+
+st.markdown("""
+<div class="feature-card">
+<h4>🔐 Companion Verification</h4>
+<p>All companions are screened and matched based on compatibility and safety guidelines to ensure respectful interactions with seniors.</p>
+
+<h4>👵 Senior-Friendly Privacy</h4>
+<p>Katha does not publicly share personal contact details. All connections are mediated safely through the platform.</p>
+
+<h4>🧠 Ethical AI Matching</h4>
+<p>Our AI matching system prioritizes emotional comfort, shared language, and interests rather than random pairing.</p>
+
+<h4>👨‍👩‍👧 Human-Centered Moderation</h4>
+<p>The platform is designed for NGOs, RWAs, and caregivers to oversee and ensure safe companionship for elders.</p>
+</div>
+""", unsafe_allow_html=True)
+
+st.write("---")
+
+# 🌐 MULTILINGUAL IMPACT SECTION
+st.markdown("## 🌍 Designed for Multilingual India")
+
+st.markdown("""
+<div class="feature-card">
+<p>Katha supports multiple Indian languages including Kannada, Telugu, Tamil, Malayalam, Hindi, and English.</p>
+<p>This ensures seniors can communicate comfortably in their native language, reducing digital fear and increasing emotional connection.</p>
+</div>
+""", unsafe_allow_html=True)
