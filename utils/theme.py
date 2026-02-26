@@ -5,11 +5,11 @@ def apply_theme():
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
-    /* 🌿 Animated Background */
+    /* 🌿 Animated Gradient Background */
     .stApp {
         background: linear-gradient(-45deg, #F7FFF2, #EAFAD7, #DFF3C3, #B7E892);
         background-size: 400% 400%;
-        animation: gradientBG 20s ease infinite;
+        animation: gradientBG 18s ease infinite;
         font-family: 'Playfair Display', serif;
     }
 
@@ -19,7 +19,7 @@ def apply_theme():
         100% {background-position: 0% 50%;}
     }
 
-    /* ✨ Subtle Floating Glow */
+    /* ✨ Floating Glow Particles (More Premium) */
     .glow {
         position: fixed;
         width: 260px;
@@ -27,21 +27,42 @@ def apply_theme():
         background: radial-gradient(circle, rgba(183,232,146,0.18) 0%, rgba(183,232,146,0) 70%);
         border-radius: 50%;
         filter: blur(70px);
-        animation: float 30s infinite ease-in-out;
+        animation: float 28s infinite ease-in-out;
         z-index: -1;
-        opacity: 0.5;
+        opacity: 0.45;
     }
 
-    .glow1 { top: 12%; left: 6%; }
-    .glow2 { top: 70%; left: 80%; animation-delay: 12s; }
+    .glow1 { top: 10%; left: 6%; }
+    .glow2 { top: 70%; left: 85%; animation-delay: 8s; }
+    .glow3 { top: 40%; left: 45%; animation-delay: 15s; }
 
     @keyframes float {
-        0% {transform: translateY(0px);}
-        50% {transform: translateY(-35px);}
-        100% {transform: translateY(0px);}
+        0% {transform: translateY(0px) translateX(0px);}
+        50% {transform: translateY(-30px) translateX(10px);}
+        100% {transform: translateY(0px) translateX(0px);}
     }
 
-    /* 🌸 PREMIUM SIDEBAR */
+    /* 🌟 Soft Title Glow Pulse (Luxury Effect) */
+    .main-title {
+        animation: softGlow 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes softGlow {
+        from { text-shadow: 0 0 5px rgba(183,232,146,0.2); }
+        to { text-shadow: 0 0 18px rgba(183,232,146,0.6); }
+    }
+
+    /* 💎 Card Hover Animation (Modern Premium UI) */
+    .feature-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0px 20px 40px rgba(0,0,0,0.12);
+    }
+
+    /* 🌸 Premium Sidebar */
     section[data-testid="stSidebar"] {
         background: linear-gradient(180deg, #EAFAD7, #CFEFA9);
         border-right: 2px solid rgba(0,0,0,0.05);
@@ -52,7 +73,7 @@ def apply_theme():
         display: none;
     }
 
-    /* Sidebar menu font (CLASSY) */
+    /* Classy Sidebar Font */
     [data-testid="stSidebarNav"] li div {
         font-family: 'Playfair Display', serif !important;
         font-size: 19px;
@@ -63,15 +84,12 @@ def apply_theme():
         letter-spacing: 0.5px;
     }
 
-    /* Hover effect */
     [data-testid="stSidebarNav"] li div:hover {
         background-color: rgba(183,232,146,0.45);
-        border-radius: 14px;
-        transform: translateX(3px);
+        transform: translateX(4px);
         transition: 0.2s ease;
     }
 
-    /* 🌼 Sidebar Brand Title */
     .sidebar-title {
         font-family: 'Playfair Display', serif;
         font-size: 36px;
@@ -92,6 +110,7 @@ def apply_theme():
 
     <div class="glow glow1"></div>
     <div class="glow glow2"></div>
+    <div class="glow glow3"></div>
     """, unsafe_allow_html=True)
 
     st.sidebar.markdown(
