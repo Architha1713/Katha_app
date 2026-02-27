@@ -91,9 +91,17 @@ phone = st.text_input(
 )
 
 # 🌐 Language
-language = st.selectbox(
-    "🌐 Preferred Language",
-    ["Kannada", "Telugu", "Tamil", "Malayalam", "Hindi", "English"]
+languages = st.multiselect(
+    "Languages Known & Comfortable In",
+    [
+        "English",
+        "Kannada",
+        "Hindi",
+        "Tamil",
+        "Telugu",
+        "Malayalam"
+    ],
+    help="Select all languages the user is comfortable communicating in."
 )
 
 # 💖 Interests
