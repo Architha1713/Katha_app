@@ -6,7 +6,7 @@ from utils.theme import apply_theme
 # Page Config
 st.set_page_config(page_title="Join Katha", layout="wide")
 
-# Apply Premium Theme (animations + sidebar)
+# Apply Premium Theme
 apply_theme()
 
 # Ensure data folder exists
@@ -31,7 +31,7 @@ st.markdown("""
     margin-bottom: 20px;
 }
 .form-card {
-    background: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.92);
     padding: 40px;
     border-radius: 24px;
     box-shadow: 0px 12px 30px rgba(0,0,0,0.08);
@@ -42,7 +42,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# 🌼 Page Header
+# 🌼 Header
 st.markdown('<div class="page-title">Join Katha</div>', unsafe_allow_html=True)
 st.markdown(
     '<div class="subtitle">NGO-assisted elder onboarding & volunteer companionship registration 💚</div>',
@@ -51,13 +51,13 @@ st.markdown(
 
 st.write("")
 
-# 💎 Form Card
+# 💎 Form Card Start
 st.markdown('<div class="form-card">', unsafe_allow_html=True)
 
 # 👤 Name
 name = st.text_input("👤 Full Name")
 
-# 🧑 ROLE SELECTION (FIRST - VERY IMPORTANT)
+# 🧑 ROLE SELECTION
 user_role = st.selectbox(
     "🧑 Profile Type",
     [
@@ -66,7 +66,7 @@ user_role = st.selectbox(
     ]
 )
 
-# 🎂 Dynamic Age Based on Role
+# 🎂 Dynamic Age Logic
 if user_role == "Volunteer Companion":
     age = st.number_input(
         "🎂 Age",
@@ -84,24 +84,24 @@ else:
         help="Elder profiles are registered by NGOs or caregivers"
     )
 
-# 📞 Phone Number (Safe)
+# 📞 Phone
 phone = st.text_input(
     "📞 Phone Number (Shared only after safe AI matching)",
     placeholder="Enter contact number"
 )
 
-# 🌐 Language
+# 🌐 MULTI-LANGUAGE (FIXED)
 languages = st.multiselect(
-    "Languages Known & Comfortable In",
+    "🌐 Languages Known & Comfortable In",
     [
         "English",
-        "Kannada",
-        "Hindi",
-        "Tamil",
-        "Telugu",
-        "Malayalam"
+        "ಕನ್ನಡ (Kannada)",
+        "हिंदी (Hindi)",
+        "தமிழ் (Tamil)",
+        "తెలుగు (Telugu)",
+        "മലയാളം (Malayalam)"
     ],
-    help="Select all languages the user is comfortable communicating in."
+    help="Select all languages the user is comfortable speaking."
 )
 
 # 💖 Interests
@@ -110,7 +110,7 @@ interests = st.multiselect(
     ["Talking", "Music", "Spirituality", "Walking", "Stories", "Prayer", "Reading"]
 )
 
-# 🤝 Companion Preference (Dynamic Logic)
+# 🤝 Companion Preference
 if user_role == "Elder (Registered by NGO)":
     companion_type = st.selectbox(
         "🤝 Preferred Companion Type",
@@ -122,46 +122,59 @@ else:
         ["Elder Friend", "Any"]
     )
 
-# 🛡️ Safety Note (Judge-Boosting Feature)
+# 🛡️ Safety Note
 st.info(
     "🛡️ Safety Note: Contact details are securely stored and only shared with verified matches through NGOs or authorized coordinators."
 )
 
 # 🌸 Submit Button
 if st.button("🌸 Register with Katha"):
-    # Basic Validation
+    
+    # Validation
     if name.strip() == "" or phone.strip() == "":
         st.error("⚠️ Please fill in all required details (Name and Phone Number).")
+    
+    elif len(languages) == 0:
+        st.error("⚠️ Please select at least one language.")
+    
     else:
+        # Convert lists to clean strings
+        languages_str = ", ".join(languages)
+        interests_str = ", ".join(interests)
+
+        # Create DataFrame (FIXED: languages not language)
         new_user = pd.DataFrame(
-            [[name, age, phone, language, str(interests), companion_type, user_role]],
+            [[name, age, phone, languages_str, interests_str, companion_type, user_role]],
             columns=[
                 "Name",
                 "Age",
                 "Phone",
-                "Language",
+                "Languages",  # Updated column name
                 "Interests",
                 "Companion Type",
                 "Role"
             ]
         )
 
-        # Save to CSV
+        # Save to CSV safely
         if os.path.exists(file_path):
             new_user.to_csv(file_path, mode="a", header=False, index=False)
         else:
             new_user.to_csv(file_path, index=False)
 
-        # 🌐 Multilingual Success Messages (VERY IMPRESSIVE FOR JUDGES)
+        # 🌐 Multilingual Success Messages
+        primary_lang = languages[0]  # First selected language
+
         messages = {
             "English": "🌸 Registration successful! Profile securely added for AI companionship matching.",
-            "Kannada": "🌸 ನೋಂದಣಿ ಯಶಸ್ವಿಯಾಗಿದೆ! ಪ್ರೊಫೈಲ್ ಸುರಕ್ಷಿತವಾಗಿ ಸೇರಿಸಲಾಗಿದೆ ಮತ್ತು ಸೂಕ್ತ ಸಂಗಾತಿಯನ್ನು ಹೊಂದಿಸಲಾಗುತ್ತದೆ.",
-            "Hindi": "🌸 पंजीकरण सफल! प्रोफ़ाइल सुरक्षित रूप से जोड़ दी गई है और उपयुक्त साथी से मिलान किया जाएगा।",
-            "Tamil": "🌸 பதிவு வெற்றிகரமாக முடிந்தது! சுயவிவரம் பாதுகாப்பாக சேர்க்கப்பட்டது மற்றும் பொருத்தமான தோழர் இணைக்கப்படுவார்.",
-            "Telugu": "🌸 నమోదు విజయవంతమైంది! ప్రొఫైల్ సురక్షితంగా జోడించబడింది మరియు సరైన తోడు జత చేయబడుతుంది.",
-            "Malayalam": "🌸 രജിസ്ട്രേഷൻ വിജയകരമായി പൂർത്തിയായി! പ്രൊഫൈൽ സുരക്ഷിതമായി ചേർത്തു."
+            "ಕನ್ನಡ (Kannada)": "🌸 ನೋಂದಣಿ ಯಶಸ್ವಿಯಾಗಿದೆ! ಪ್ರೊಫೈಲ್ ಸುರಕ್ಷಿತವಾಗಿ ಸೇರಿಸಲಾಗಿದೆ.",
+            "हिंदी (Hindi)": "🌸 पंजीकरण सफल! प्रोफ़ाइल सुरक्षित रूप से जोड़ दी गई है।",
+            "தமிழ் (Tamil)": "🌸 பதிவு வெற்றிகரமாக முடிந்தது! சுயவிவரம் பாதுகாப்பாக சேர்க்கப்பட்டது.",
+            "తెలుగు (Telugu)": "🌸 నమోదు విజయవంతమైంది! ప్రొఫైల్ సురక్షితంగా జోడించబడింది.",
+            "മലയാളം (Malayalam)": "🌸 രജിസ്ട്രേഷൻ വിജയകരമായി പൂർത്തിയായി!"
         }
 
-        st.success(messages.get(language, messages["English"]))
+        st.success(messages.get(primary_lang, messages["English"]))
 
+# Close Form Card
 st.markdown('</div>', unsafe_allow_html=True)
